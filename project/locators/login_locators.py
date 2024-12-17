@@ -1,0 +1,11 @@
+class LoginLocator:
+    login_link = '//a[text()= "Login"]'
+    sign_up = '//*[@id="otp-login"]//div/a/span'
+    email_input = '//div/input[@id="email"]'
+    login_button = '//*[@id="otp-login-btn"]'
+    login_with_password = '//div/a/span'
+    email_id_login = '//div/input[@id="email"]'
+    password_login = '//div/input[@id="password"]'
+    submit_button = '//div/input[@type="submit"]'
+    loggedin_user = '//li/a/span'
+    sign_out = '//*[@href="/sign_out"]'
