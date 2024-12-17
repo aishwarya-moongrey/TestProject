@@ -10,22 +10,22 @@ jobs:
   steps:
  
     # Step 1: Install Python
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '3.x'
-        addToPath: true
+    # - task: UsePythonVersion@0
+    #   inputs:
+    #     versionSpec: '3.x'
+    #     addToPath: true
  
     # Step 2: Install dependencies
-    - script: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-      displayName: 'Install dependencies'
+    # - script: |
+    #     python -m pip install --upgrade pip
+    #     pip install -r requirements.txt
+    #   displayName: 'Install dependencies'
  
     # Step 3: Set up WebDriver (Chromium)
-    - script: |
-        sudo apt-get update
-        sudo apt-get install -y chromium-browser
-      displayName: 'Install Chromium Browser'
+    # - script: |
+    #     sudo apt-get update
+    #     sudo apt-get install -y chromium-browser
+    #   displayName: 'Install Chromium Browser'
  
     # Step 4: Set the environment variable for headless browser testing
     - script: |
