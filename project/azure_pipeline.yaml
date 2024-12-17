@@ -1,0 +1,45 @@
+trigger:
+- main  # or the branch you want to trigger from
+ 
+pool:
+  vmImage: 'ubuntu-latest'  # Select an Ubuntu VM for running tests
+ 
+jobs:
+- job: RunSeleniumTests
+  displayName: 'Run Selenium Tests'
+  steps:
+ 
+    # Step 1: Install Python
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.x'
+        addToPath: true
+ 
+    # Step 2: Install dependencies
+    - script: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+      displayName: 'Install dependencies'
+ 
+    # Step 3: Set up WebDriver (Chromium)
+    - script: |
+        sudo apt-get update
+        sudo apt-get install -y chromium-browser
+      displayName: 'Install Chromium Browser'
+ 
+    # Step 4: Set the environment variable for headless browser testing
+    - script: |
+        export DISPLAY=:99
+      displayName: 'Set DISPLAY environment variable for headless testing'
+ 
+    # Step 5: Run Selenium Tests using pytest
+    - script: |
+        pytest --html=./reports/report.html
+      displayName: 'Run UI Selenium Tests'
+ 
+    # Step 6: Upload Test Results (Optional: If you want to visualize test results in Azure DevOps)
+    # - task: PublishTestResults@2
+    #   inputs:
+    #     testResultsFormat: 'JUnit'
+    #     testResultsFiles: '**/test-*.xml'
+    #     failTaskOnFailedTests: true
