@@ -1,8 +1,8 @@
 trigger:
 - main  # or the branch you want to trigger from
  
-pool:
-  vmImage: 'ubuntu-latest'  # Select an Ubuntu VM for running tests
+pool: my_win_pool
+  # vmImage: 'ubuntu-latest'  # Select an Ubuntu VM for running tests
  
 jobs:
 - job: RunSeleniumTests
