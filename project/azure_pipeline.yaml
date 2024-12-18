@@ -19,7 +19,7 @@ jobs:
     # Step 2: Install dependencies
     - script: |
         python -m pip install
-        pip install -r requirements.txt
+        pip install -r project/requirements.txt
       displayName: 'Install dependencies'
  
     # Step 3: Set up WebDriver (Chromium)
