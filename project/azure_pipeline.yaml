@@ -13,12 +13,12 @@ jobs:
     # Step 1: Install Python
     - task: UsePythonVersion@0
       inputs:
-        versionSpec: '3'
+        # versionSpec: '3'
         addToPath: true
  
     # Step 2: Install dependencies
     - script: |
-        python -m pip install --upgrade pip
+        sudo apt install python3-pip
         pip install -r requirements.txt
       displayName: 'Install dependencies'
  
