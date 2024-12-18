@@ -11,11 +11,19 @@ jobs:
   steps:
  
     # Step 1: Install Python
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '3.12'
-        addToPath: true
-      displayName: 'Use Python 312'
+    - script: |
+        # Download Python 3.12.x for Linux x64
+        wget https://www.python.org/ftp/python/3.12.x/Python-3.12.x.tgz
+        tar -xzf Python-3.12.x.tgz
+        cd Python-3.12.x
+        ./configure --enable-optimizations
+        make -j $(nproc)
+        sudo make altinstall  # To avoid conflicts with system Python
+
+        # Add Python 3.12 to PATH
+        echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bashrc
+        source ~/.bashrc
+      displayName: Install Python 3.12
 
     # - task: UsePythonVersion@0
     #   inputs:
