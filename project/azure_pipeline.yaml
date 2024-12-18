@@ -11,15 +11,14 @@ jobs:
   steps:
  
     # Step 1: Install Python
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '3.6'
-        addToPath: true
+    # - task: UsePythonVersion@0
+    #   inputs:
+    #     versionSpec: '3.6'
+    #     addToPath: true
  
     # Step 2: Install dependencies
     - script: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r project/requirements.txt
         pip install pytest
       displayName: 'Install dependencies'
  
