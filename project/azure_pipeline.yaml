@@ -13,7 +13,7 @@ jobs:
     # Step 1: Install Python
     - task: UsePythonVersion@0
       inputs:
-        versionSpec: '3.10'
+        versionSpec: '3.13.1'
         addToPath: true
  
     # Step 2: Install dependencies
