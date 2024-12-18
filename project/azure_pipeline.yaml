@@ -10,15 +10,16 @@ jobs:
   displayName: 'Run Selenium Tests'
   steps:
  
-    # Step 1: Install Python
-    - task: UsePythonVersion@0
-      inputs:
-        # versionSpec: '3'
-        addToPath: true
+    # # Step 1: Install Python
+    # - task: UsePythonVersion@0
+    #   inputs:
+    #     versionSpec: '3'
+    #     addToPath: true
  
     # Step 2: Install dependencies
     - script: |
         sudo apt install python3-pip
+        sudo apt install python3
         pip install -r requirements.txt
       displayName: 'Install dependencies'
  
