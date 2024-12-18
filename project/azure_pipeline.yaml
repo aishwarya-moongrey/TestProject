@@ -14,6 +14,7 @@ jobs:
     - task: UsePythonVersion@0
       inputs:
         versionSpec: '3.10'
+        architecture: 'x64'
         addToPath: true
  
     # Step 2: Install dependencies
