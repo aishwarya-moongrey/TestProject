@@ -14,7 +14,8 @@ jobs:
     - task: UsePythonVersion@0
       inputs:
         versionSpec: '3.10'
-        githubToken: $(secret_token)
+        disableDownloadFromRegistry: false # allow downloading from registry.
+        githubToken: $(secret_token) # this should be the name of your toke variable!      
         addToPath: true
  
     # Step 2: Install dependencies
