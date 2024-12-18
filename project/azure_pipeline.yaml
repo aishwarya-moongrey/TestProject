@@ -10,32 +10,16 @@ jobs:
   displayName: 'Run Selenium Tests'
   steps:
  
-    # Step 1: Install Python
-    - script: |
-        # Download Python 3.12.x for Linux x64
-        wget https://www.python.org/ftp/python/3.12.x/Python-3.12.x.tgz
-        tar -xzf Python-3.12.x.tgz
-        cd Python-3.12.x
-        ./configure --enable-optimizations
-        make -j $(nproc)
-        sudo make altinstall  # To avoid conflicts with system Python
-
-        # Add Python 3.12 to PATH
-        echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bashrc
-        source ~/.bashrc
-      displayName: Install Python 3.12
-
-    # - task: UsePythonVersion@0
-    #   inputs:
-    #     versionSpec: '3.10'
-    #     disableDownloadFromRegistry: false # allow downloading from registry.
-    #     githubToken: $(secret_token) # this should be the name of your toke variable!      
-    #     addToPath: true
+    Step 1: Install Python
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.10'
+        addToPath: true
  
-    # Step 2: Install dependencies
+    Step 2: Install dependencies
     - script: |
-        python -m pip install
-        pip install -r project/requirements.txt
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
       displayName: 'Install dependencies'
  
     # Step 3: Set up WebDriver (Chromium)
