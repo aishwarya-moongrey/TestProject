@@ -11,10 +11,38 @@ jobs:
   steps:
  
     # Step 1: Install Python
+    tasks:
+      - name: Update system packages
+        apt:
+          name:
+            - update
+            - upgrade
+          state: present
+
+      - name: Install Python3
+        apt:
+          name: python3
+          state: present
+
+      - name: Install pip3
+        apt:
+          name: python3-pip
+          state: present
+
+      - name: Install pytest
+        pip:
+          name: pytest
+          state: present 
+
+      - name: Install pytest-html
+        pip:
+          name: pytest-html
+          state: present 
     # - task: UsePythonVersion@0
     #   inputs:
     #     versionSpec: '3.10'
     #     addToPath: true
+
  
     # Step 2: Install dependencies
     - script: |
