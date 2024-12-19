@@ -41,7 +41,7 @@ jobs:
     # Step 4: Download Test Artifacts
     - task: DownloadPipelineArtifact@2
       inputs:
-        artifact: project/reports
+        buildType: 'current'
  
     # Step 6: Upload Test Results (Optional: If you want to visualize test results in Azure DevOps)
     # - task: PublishTestResults@2
