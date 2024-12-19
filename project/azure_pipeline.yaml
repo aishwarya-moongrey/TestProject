@@ -46,7 +46,7 @@ jobs:
       inputs:
         buildType: 'current'
         downloadType: 'single'
-        artifactName: 'test_artifact'
+        artifactName: 'reports'
         downloadPath: '$(System.ArtifactsDirectory)'
  
     # Step 6: Upload Test Results (Optional: If you want to visualize test results in Azure DevOps)
