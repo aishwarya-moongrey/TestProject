@@ -43,10 +43,9 @@ jobs:
       inputs:
         buildType: 'current'
  
- 
     # Step 6: Upload Test Results (Optional: If you want to visualize test results in Azure DevOps)
-    # - task: PublishTestResults@2
-    #   inputs:
-    #     testResultsFormat: 'JUnit'
-    #     testResultsFiles: '**/test-*.xml'
-    #     failTaskOnFailedTests: true
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '**/test-*.xml'
+        failTaskOnFailedTests: true
