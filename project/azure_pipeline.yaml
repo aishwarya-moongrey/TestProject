@@ -15,12 +15,6 @@ jobs:
       inputs:
         versionSpec: '3.x'
         addToPath: true
- 
-    - task: PythonScript@0
-      inputs:
-        scriptSource: 'inline'
-        scriptPath: 'project/test_cases/test_login.py' # Replace with the actual path
-        arguments: '--memory-limit=4G'
 
     # Step 2: Install dependencies
     - script: |
@@ -45,11 +39,9 @@ jobs:
       displayName: 'Run UI Selenium Tests'
 
     # Step 4: Download Test Artifacts
-    - download: current
-      artifact: WebApp
-    # - task: DownloadPipelineArtifact@2
-    #   inputs:
-    #     buildType: 'current'
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        buildType: 'current'
  
     # Step 6: Upload Test Results (Optional: If you want to visualize test results in Azure DevOps)
     # - task: PublishTestResults@2
