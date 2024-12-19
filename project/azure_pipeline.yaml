@@ -40,19 +40,8 @@ jobs:
 
     # Step 4: Download Test Artifacts
     - task: DownloadPipelineArtifact@2
-      displayName: 'Download Composite Artifact'
       inputs:
-        buildType: 'current' 
-        project: 'TestProject' 
-        pipeline: 'aishwarya-moongrey.TestProject' 
-        artifactName: 'art' 
-        downloadType: 'single' 
-        pattern: '**/*' 
-        clean: true 
-
-    # - task: DownloadPipelineArtifact@2
-    #   inputs:
-    #     artifact: reports
+        artifact: project/reports
  
     # Step 6: Upload Test Results (Optional: If you want to visualize test results in Azure DevOps)
     # - task: PublishTestResults@2
