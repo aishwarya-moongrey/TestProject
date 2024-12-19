@@ -16,6 +16,12 @@ jobs:
         versionSpec: '3.x'
         addToPath: true
  
+    - task: PythonScript@0
+      inputs:
+        scriptSource: 'inline'
+        scriptPath: 'project/test_cases/test_login.py' # Replace with the actual path
+        arguments: '--memory-limit=4G'
+
     # Step 2: Install dependencies
     - script: |
         python -m pip install --upgrade pip
