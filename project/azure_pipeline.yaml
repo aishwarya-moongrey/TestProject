@@ -18,7 +18,6 @@ jobs:
  
     # Step 2: Install dependencies
     - script: |
-        python -m pip install
         pip install -r project/requirements.txt
       displayName: 'Install dependencies'
  
