@@ -39,14 +39,19 @@ jobs:
       displayName: 'Run UI Selenium Tests'
 
     # Step 4: Download Test Artifacts
-    - task: DownloadPipelineArtifact@2
+    # - task: DownloadPipelineArtifact@2
+    #   inputs:
+    #     buildType: 'current'
+    - task: DownloadBuildArtifacts@1
       inputs:
         buildType: 'current'
- 
+        downloadType: 'single'
+        artifactName: 'test_artifact'
+        downloadPath: '$(System.ArtifactsDirectory)'
  
     # Step 6: Upload Test Results (Optional: If you want to visualize test results in Azure DevOps)
-    - task: PublishTestResults@2
-      inputs:
-        testResultsFormat: 'JUnit'
-        testResultsFiles: '**/*.html'
-        failTaskOnFailedTests: true
+    # - task: PublishTestResults@2
+    #   inputs:
+    #     testResultsFormat: 'html'
+    #     testResultsFiles: '**/*.html'
+    #     failTaskOnFailedTests: true
