@@ -42,12 +42,19 @@ jobs:
     # - task: DownloadPipelineArtifact@2
     #   inputs:
     #     buildType: 'current'
-    - task: DownloadPipelineArtifact@2
-      inputs:
-        buildType: 'current'
-        artifactName: 'reports'
-        targetPath: '$(Pipeline.Workspace)'
+    # - task: DownloadPipelineArtifact@1
+    #   inputs:
+    #     buildType: 'current'
+    #     : 'single'
+    #     artifactName: 'my-artifact'
+    #     downloadPath: '$(Build.ArtifactStagingDirectory)'
  
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: project/reports
+        artifactName: 'drop'
+        publishLocation: 'Container'
+
     # Step 6: Upload Test Results (Optional: If you want to visualize test results in Azure DevOps)
     # - task: PublishTestResults@2
     #   inputs:
