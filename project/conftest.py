@@ -9,7 +9,8 @@ from webdriver_manager.chrome import ChromeDriverManager  # Optional, handles dr
 def driver():
     # Setup Chrome driver
     options = Options()
-    options.headless = True  # Optional: run the browser in the background without UI
+    options.add_argument('--headless')
+    # options.headless = True  # Optional: run the browser in the background without UI
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     driver.get("https://rahulshettyacademy.com/")
     driver.maximize_window()
