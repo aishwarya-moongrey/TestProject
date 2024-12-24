@@ -13,14 +13,14 @@ def test_successful_login(driver):
     driver.find_element(By.XPATH, LoginLocator.login_with_password).click()
 
     # Fill in the login credentials
-    time.sleep(10)
+    time.sleep(30)
     driver.find_element(By.XPATH, LoginLocator.email_id_login).send_keys("test9909user@gmail.com")
     time.sleep(5)
     driver.find_element(By.XPATH, LoginLocator.password_login).send_keys("@test9909user@")
     time.sleep(3)
     # Submit the login form
     driver.find_element(By.XPATH, LoginLocator.submit_button).click()
-    time.sleep(15)
+    time.sleep(20)
     driver.save_screenshot('ss1.png')
     # Check if login was successful
     try:
