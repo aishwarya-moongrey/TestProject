@@ -13,7 +13,7 @@ jobs:
     # Step 1: Install Python
     - task: UsePythonVersion@0
       inputs:
-        versionSpec: '3.10'
+        versionSpec: '3.x'
         addToPath: true
 
     # Step 2: Install dependencies
@@ -22,44 +22,22 @@ jobs:
         pip install -r project/requirements.txt
       displayName: 'Install dependencies'
  
-    # Step 3: Set up WebDriver (Chromium)
-    - script: |
-        sudo apt-get update
-        sudo apt-get install -y chromium-browser
-      displayName: 'Install Chromium Browser'
- 
-    # Step 4: Set the environment variable for headless browser testing
+    # Step 3: Set up linux WebDriver (Chromium)
     # - script: |
-    #     export DISPLAY=:99
-    #   displayName: 'Set DISPLAY environment variable for headless testing'
+    #     sudo apt-get update
+    #     sudo apt-get install -y chromium-browser
+    #   displayName: 'Install Chromium Browser'
  
-    # Step 3: Run Selenium Tests using pytest
+    # Step 4: Run Selenium Tests using pytest
     - script: |
         pytest --html=project/reports/report.html
       displayName: 'Run UI Selenium Tests'
 
-    # Step 4: Download Test Artifacts
-    # - task: DownloadPipelineArtifact@2
-    #   inputs:
-    #     buildType: 'current'
-    # - task: DownloadPipelineArtifact@1
-    #   inputs:
-    #     buildType: 'current'
-    #     : 'single'
-    #     artifactName: 'my-artifact'
-    #     downloadPath: '$(Build.ArtifactStagingDirectory)'
- 
+    # Step 5: Download Test Artifacts 
     - task: PublishBuildArtifacts@1
       inputs:
         pathToPublish: project/reports
         artifactName: 'drop'
         publishLocation: 'Container'
         continueOnError: true
-
-    # Step 6: Upload Test Results (Optional: If you want to visualize test results in Azure DevOps)
-    # - task: PublishTestResults@2
-    #   inputs:
-    #     testResultsFormat: 'html'
-    #     testResultsFiles: '**/*.html'
-    #     failTaskOnFailedTests: true
 
