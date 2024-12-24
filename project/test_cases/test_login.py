@@ -21,11 +21,12 @@ def test_successful_login(driver):
     # Submit the login form
     driver.find_element(By.XPATH, LoginLocator.submit_button).click()
     time.sleep(15)
+    driver.save_screenshot('ss1.png')
     # Check if login was successful
     try:
         username = driver.find_element(By.XPATH, LoginLocator.loggedin_user).text
     except:
-        driver.save_screenshot('ss.png')
+        driver.save_screenshot('ss2.png')
     assert "Test" == username  # checking the logged-in username
     
     # Logout the user
