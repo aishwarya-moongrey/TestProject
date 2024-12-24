@@ -14,8 +14,12 @@ def test_successful_login(driver):
 
     # Fill in the login credentials
     time.sleep(30)
+    driver.find_element(By.XPATH, LoginLocator.email_id_login).click()
+    time.sleep(2)
     driver.find_element(By.XPATH, LoginLocator.email_id_login).send_keys("test9909user@gmail.com")
     time.sleep(5)
+    driver.find_element(By.XPATH, LoginLocator.password_login).click()
+    time.sleep(2)
     driver.find_element(By.XPATH, LoginLocator.password_login).send_keys("@test9909user@")
     time.sleep(3)
     # Submit the login form
