@@ -10,7 +10,11 @@ jobs:
   displayName: 'Run Selenium Tests'
   steps:
  
-    # Step 1: Install Python
+    # Step 1: Install Git
+    - script: |
+        sudo apt update
+        sudo apt install git
+
     - task: UsePythonVersion@0
       inputs:
         versionSpec: '3.10'
