@@ -54,6 +54,7 @@ jobs:
         pathToPublish: project/reports
         artifactName: 'drop'
         publishLocation: 'Container'
+        continueOnError: true
 
     # Step 6: Upload Test Results (Optional: If you want to visualize test results in Azure DevOps)
     # - task: PublishTestResults@2
